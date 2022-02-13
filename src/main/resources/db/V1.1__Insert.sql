@@ -1,0 +1,1 @@
+insert into home(label,`count`,custom ) values ("t1",519.5,"self");
