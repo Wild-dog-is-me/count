@@ -23,10 +23,12 @@
         from home
         <where>
             (${type})
+--             根据指定日期查询
             <if test="date != null">
                 and #{date[1]} >= cusDate
                 and cusDate >= #{date[0]}
             </if>
+--              是否使用
             <if test="used==true">
                 and used is true
             </if>
@@ -70,7 +72,6 @@
         </where>
         group by type, custom;
     </select>
-
 
     <insert id="add" parameterType="com.my.count.model.HomeDto">
         insert into home(label, custom, `count`, comment, `type`, cusDate, pic, used)

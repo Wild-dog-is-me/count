@@ -18,25 +18,25 @@ import java.util.List;
 @Configuration
 @EnableSwagger2
 public class Swagger {
-    @Bean
-    public Docket createRestApi() {
-        ParameterBuilder tokenPar = new ParameterBuilder();
-        List<Parameter> pars = new ArrayList<>();
+  @Bean
+  public Docket createRestApi() {
+    ParameterBuilder tokenPar = new ParameterBuilder();
+    List<Parameter> pars = new ArrayList<>();
 
-        return new Docket(DocumentationType.SWAGGER_2)
-                .apiInfo(apiInfo())
-                .select()
-                .apis(RequestHandlerSelectors.basePackage("com.my.count.controller"))
-                .paths(PathSelectors.any())
-                .build()
-                .useDefaultResponseMessages(false).globalOperationParameters(pars);
-    }
+    return new Docket(DocumentationType.SWAGGER_2)
+      .apiInfo(apiInfo())
+      .select()
+      .apis(RequestHandlerSelectors.basePackage("com.my.count.controller"))
+      .paths(PathSelectors.any())
+      .build()
+      .useDefaultResponseMessages(false).globalOperationParameters(pars);
+  }
 
-    private ApiInfo apiInfo(){
-        return new ApiInfoBuilder()
-                .title("消费管理系统")
-                .version("1.0")
-                .description("自己的记账软件")
-                .build();
-    }
+  private ApiInfo apiInfo(){
+    return new ApiInfoBuilder()
+      .title("消费管理系统")
+      .version("1.0")
+      .description("自己的记账软件")
+      .build();
+  }
 }

@@ -6,6 +6,8 @@ import com.my.count.resdto.ListResult;
 import com.my.count.resdto.SumDto;
 import com.my.count.resdto.VsDto;
 
+import java.io.IOException;
+import java.text.ParseException;
 import java.util.List;
 
 public interface IHomeService {
@@ -22,4 +24,6 @@ public interface IHomeService {
     List<SumDto> sum(Querydto querydto);
 
     List<VsDto> vs(Querydto querydto);
+
+    Boolean deal(String path) throws IOException, ParseException;
 }

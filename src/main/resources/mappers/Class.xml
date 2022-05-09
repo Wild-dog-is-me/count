@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.my.count.dao.IClassMapper">
+
+
+  <select id="getAllClassByWeek" resultType="com.my.count.model.ClassDto">
+    select *
+    from class_dto
+    where week = #{week};
+  </select>
+  <select id="allClass" resultType="com.my.count.model.ClassDto">
+    select * from class_dto
+  </select>
+
+
+  <delete id="deleteClass">
+    delete from class_dto where id in
+    <foreach collection="ids" close=")" item="id" open="(" separator=",">
+      #{id}
+    </foreach>
+  </delete>
+
+  <update id="updateClass">
+    update class_dto
+    set weekday   = #{weekday},
+        className = #{class_name},
+        teacher = #{teacher},
+        classRoom = # {class_room},
+        week = #{week},
+        times = #{times}
+    where id = #{id}
+  </update>
+
+  <insert id="addClass" parameterType="com.my.count.model.ClassDto">
+    insert into class_dto(weekday,className,teacher,classRoom,week,times)
+    values (#{weekday},#{class_name},#{teacher},#{class_room},#{week},#{times})
+  </insert>
+
+  <insert id="addClassByExcel" parameterType="com.my.count.model.ClassDto">
+    insert into class_dto(weekday,className,teacher,classRoom,week,times)
+    values (#{weekday},#{class_name},#{teacher},#{class_room},#{week},#{times})
+  </insert>
+</mapper>
